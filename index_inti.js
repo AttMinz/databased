@@ -1399,8 +1399,9 @@ const BlackThumbalin = "https://i.ibb.co/VYVPX4n8/20250530-060906.jpg";
 
 // Caption utama
 const mainCaption = `\`\`\`情報ドゥヨウノワスアンジン
-—々 ᴅᴇᴠᴇʟᴏᴘᴇʀ: @vDzee
-—々 ᴠᴇʀꜱɪᴏɴ: 1.2
+—々 開発者 : @vDzee
+—々 バージョン: 1.2
+—々 状態 : ${status}
 ====================
 ありがとう
 々 𐍃𐌍𐌉𐌕𐌂𐌇  @snitchezs
@@ -1424,6 +1425,8 @@ BUG MENU 
 // --- START Command
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
+    const userId = msg.from.id;
+    const status = await getUserStatus(userId)
     const keyboard = {
         inline_keyboard: [
             [
