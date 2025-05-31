@@ -1400,14 +1400,11 @@ const BlackThumbalin = "https://i.ibb.co/VYVPX4n8/20250530-060906.jpg";
 // Command /start
 bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
-    const userId = msg.from.id;
-    const status = await getUserStatus(userId);
-
     const mainCaption = `\`\`\`
 情報ドゥヨウノワスアンジン
 —々 開発者 : @vDzee
 —々 バージョン: 1.2
-—々 状態 : ${status}
+—々 状態 : 陰毛 
 ====================
 ありがとう
 々 𐍃𐌍𐌉𐌕𐌂𐌇  @snitchezs
@@ -1430,7 +1427,7 @@ BUG MENU
     const keyboard = {
         inline_keyboard: [
             [
-                { text: "開発者", url: "https://t.me/vdzee" }
+                { text: "開発者", url: "https://t.me/vdzee" },
             ]
         ]
     };
