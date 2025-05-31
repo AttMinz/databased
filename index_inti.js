@@ -1397,17 +1397,23 @@ function isOwner(userId) {
 }
 const BlackThumbalin = "https://i.ibb.co/VYVPX4n8/20250530-060906.jpg";
 
-// Caption utama
-const mainCaption = `\`\`\`情報ドゥヨウノワスアンジン
+// Command /start
+bot.onText(/\/start/, async (msg) => {
+    const chatId = msg.chat.id;
+    const userId = msg.from.id;
+    const status = await getUserStatus(userId);
+
+    const mainCaption = `\`\`\`
+情報ドゥヨウノワスアンジン
 —々 開発者 : @vDzee
 —々 バージョン: 1.2
 —々 状態 : ${status}
 ====================
 ありがとう
 々 𐍃𐌍𐌉𐌕𐌂𐌇  @snitchezs
- 𝐀𝐥𝐰𝐚𝐲𝐬𝐜߫ά𝐥𝐳𝐳 @alwayscalzz
+𝐀𝐥𝐰𝐚𝐲𝐬𝐜߫ά𝐥𝐳𝐳 @alwayscalzz
 ===================
-BUG MENU 
+BUG MENU 
 —々 /blackbug
 ===================
 —々 /addbot <ᴘᴀɪʀɪɴɢ>
@@ -1421,27 +1427,22 @@ BUG MENU 
 —々 /delprem <ɪᴅ> <ᴅᴀʏs>
 —々 /listprem 
 ===================\`\`\``;
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: "開発者", url: "https://t.me/vdzee" }
+            ]
+        ]
+    };
 
-// --- START Command
-bot.onText(/\/start/, (msg) => {
-    const chatId = msg.chat.id;
-    const userId = msg.from.id;
-    const status = await getUserStatus(userId)
-    const keyboard = {
-        inline_keyboard: [
-            [
-                { text: "開発者", url: "https://t.me/vdzee" }
-            ]
-        ]
-    };
-
-    bot.sendPhoto(chatId, BlackThumbalin, {
-        caption: mainCaption,
-        reply_to_message_id: msg.message_id,
-        parse_mode: "Markdown",
-        reply_markup: keyboard
-    });
+    bot.sendPhoto(chatId, BlackThumbalin, {
+        caption: mainCaption,
+        reply_to_message_id: msg.message_id,
+        parse_mode: "Markdown",
+        reply_markup: keyboard
+    });
 });
+
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
 });
